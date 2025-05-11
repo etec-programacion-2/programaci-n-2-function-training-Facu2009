@@ -33,7 +33,11 @@ fun main() {
     val nombres = listOf("Ana", "Juan", "María", "Pedro", "Lucía")
     val notasAlumnos = listOf(7.0, 5.0, 8.0, 6.0, 9.0)
     val aprobados = obtenerAlumnosAprobados(nombres, notasAlumnos)
-    println("Alumnos aprobados: $aprobados")
+
+    println("Alumnos aprobados:")
+    for (alumno in aprobados) {
+        println(alumno)
+    }
 
     println("\n=== Etapa 4: Funciones Avanzadas ===")
     // TODO: Implementar función generarBoletin
@@ -87,12 +91,24 @@ fun obtenerEstadoAlumno(nombre: String, apellido: String, nota: Double): String 
 // Etapa 3
 fun calcularPromedioCurso(notas: List<Double>): Double {
     // Implementar aquí
-    return 0.0
+    var sumatotal = 0.0
+    for (total in notas) {
+        sumatotal += total
+    }
+
+    return sumatotal / 5
 }
 
 fun obtenerAlumnosAprobados(nombres: List<String>, notas: List<Double>): List<String> {
     // Implementar aquí
-    return emptyList()
+    val aprobados = mutableListOf<String>()
+
+    for ((nombre, nota) in nombres.zip(notas)) {
+        if (nota >= 6.0) {
+            aprobados.add("$nombre - Nota: $nota")
+        }
+    }
+    return aprobados
 }
 
 // Etapa 4
