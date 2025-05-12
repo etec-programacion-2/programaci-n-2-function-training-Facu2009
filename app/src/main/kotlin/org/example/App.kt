@@ -59,13 +59,13 @@ fun main() {
 // Etapa 1
 fun calcularPromedio(nota1: Double, nota2: Double): Double {
     // Implementar aquí
-    return (nota1 + nota2) / 2
+    return (nota1 + nota2) / 2 //SUMA DE LAS DOS NOTAS Y LUEGO DIVIDIDAS DOS
 }
 
 fun esAprobado(nota: Double): Boolean {
     // Implementar aquí
     if (nota >= 6.0){
-        return true
+        return true             //SI LA NOTA ES MAYOR O IGUAL A 6 RETORNA TRUE DE LO CONTRARIO RETORNA FALSE
     } else {
         return false 
     }
@@ -75,14 +75,14 @@ fun esAprobado(nota: Double): Boolean {
 // Etapa 2
 fun calcularPromedioTresNotas(nota1: Double, nota2: Double, nota3: Double): Double {
     // Implementar aquí
-    return (nota1 + nota2 + nota3) / 3 
+    return (nota1 + nota2 + nota3) / 3 //PROMEDIO DE NOTAS
 }
 
 fun obtenerEstadoAlumno(nombre: String, apellido: String, nota: Double): String {
     // Implementar aquí
     if (nota >= 6.0){
         return "El alumno ${nombre} ${apellido} esta aprobado"
-    } else {
+    } else {                                                            //SI EL ALUMNO TIENE UNA NOTA MAYOR O IGUAL A 6 ESTA APROBADO Y SI NO, NO
         return "El alumno ${nombre} ${apellido} esta desaprobado"
     }
     
@@ -94,18 +94,18 @@ fun calcularPromedioCurso(notas: List<Double>): Double {
     var sumatotal = 0.0
     for (total in notas) {
         sumatotal += total
-    }
+    }                               // SUMA DE LAS NOTAS CON UN FOR Y DPS DIVIDIDAS ENTRE 5
 
     return sumatotal / 5
 }
 
 fun obtenerAlumnosAprobados(nombres: List<String>, notas: List<Double>): List<String> {
     // Implementar aquí
-    val aprobados = mutableListOf<String>()
+    val aprobados = mutableListOf<String>() // LISTA MUTABLE, OSEA QUE SE PUEDE MODIFICAR
 
-    for ((nombre, nota) in nombres.zip(notas)) {
+    for ((nombre, nota) in nombres.zip(notas)) {            //CON UN FOR Y LUEGO CON UN IF VERIFICA SI UN ALUMNO ESTA APROBADO O NO
         if (nota >= 6.0) {
-            aprobados.add("$nombre - Nota: $nota")
+            aprobados.add("$nombre - Nota: $nota")          // SE GUARDAN LOS DATOS EN UN LISTA PARA DPS RETORNARLOS EN FORMA DE LISTA
         }
     }
     return aprobados
@@ -114,20 +114,48 @@ fun obtenerAlumnosAprobados(nombres: List<String>, notas: List<Double>): List<St
 // Etapa 4
 fun generarBoletin(nombre: String, materias: List<String>, notas: List<Double>): String {
     // Implementar aquí
-    return ""
+    val listovich = mutableListOf<String>()
+
+    for ((materia, nota) in materias.zip(notas)){        // MOSTRAMOS TODOS LOS VALORES MEDIANTE UN FOR 
+        listovich.add("$materia: $nota")                // LOS PONEMOS EN LA LISTA
+    }
+
+    return "Boletin del $nombre:\n$listovich"          // RETORNA EL NOMBRE CON UN SALTO DE LINEA PARA PONER LA LISTA CON LAS NOTAS
 }
 
 fun obtenerNotaMasAlta(notas: List<Double>): Double {
     // Implementar aquí
-    return 0.0
+    var mayor = notas[0]
+
+    for (encontrado in notas){
+        if (encontrado > mayor)        // CON UN FOR Y COMPARANDO NOTA CON NOTA PARA ENCONTRAR LA MAOR NOTA
+            mayor = encontrado
+    }
+
+    return mayor
 }
 
 fun obtenerNotaMasBaja(notas: List<Double>): Double {
     // Implementar aquí
-    return 0.0
+    var menor = notas[0]
+
+    for (encontrado in notas){
+        if (encontrado < menor)     // CON UN FOR Y COMPARANDO NOTA CON NOTA PARA ENCONTRAR LA MENOR NOTA
+            menor = encontrado
+    }
+
+    return menor
 }
 
 fun contarAprobados(notas: List<Double>): Int {
     // Implementar aquí
-    return 0
+    var contador = 0
+
+    for (k in notas){
+        if (k >= 6.0){          // CON UNA VARIABLE CONTADOR QUE CUENTA Y COMPARA CON LA CONDICION LOS APROBADOS
+            contador ++ 
+        }
+    }
+
+    return contador
 }
